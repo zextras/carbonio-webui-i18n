@@ -1,0 +1,79 @@
+pkgname="carbonio-webui-i18n"
+pkgver="1.0"
+pkgrel="1"
+pkgdesc="Localization resources needed by Carbonio WebUI components"
+maintainer="Zextras <packages@zextras.com>"
+copyright=(
+  "2022-2024, Zextras <https://www.zextras.com>"
+)
+license=(
+  "AGPL-3.0-only"
+)
+url="https://github.com/zextras"
+section="mail"
+priority="optional"
+arch=('x86_64')
+source=(
+  "carbonio-admin-login-ui::git+${url}/carbonio-admin-login-ui-i18n"
+  "carbonio-admin-manage-ui::git+${url}/carbonio-admin-manage-ui-i18n"
+  "carbonio-admin-ui::git+${url}/carbonio-admin-ui-i18n"
+  "carbonio-auth-ui::git+${url}/carbonio-auth-ui-i18n"
+  "carbonio-calendars-ui::git+${url}/carbonio-calendars-ui-i18n"
+  "carbonio-chats-ui::git+${url}/carbonio-chats-ui-i18n"
+  "carbonio-contacts-ui::git+${url}/carbonio-contacts-ui-i18n"
+  "carbonio-files-ui::git+${url}/carbonio-files-ui-i18n"
+  "carbonio-login::git+${url}/carbonio-login-i18n"
+  "carbonio-login-ui::git+${url}/carbonio-login-ui-i18n"
+  "carbonio-mails-ui::git+${url}/carbonio-mails-ui-i18n"
+  "carbonio-shell-ui::git+${url}/carbonio-shell-ui-i18n"
+  "carbonio-tasks-ui::git+${url}/carbonio-tasks-ui-i18n"
+  "carbonio-ws-collaboration-ui::git+${url}/carbonio-ws-collaboration-ui-i18n"
+)
+sha256sums=('SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP')
+
+package() {
+  cd "${srcdir}"
+
+  # Login localizationtions
+  install -D carbonio-admin-login-ui/*.json \
+    -t "${pkgdir}/opt/zextras/admin/login/i18n"
+  install -D carbonio-login-ui/*.json \
+    -t "${pkgdir}/opt/zextras/web/login/i18n"
+
+  # IRIS localizations
+  install -D carbonio-admin-manage-ui/*.json \
+    -t "${pkgdir}/opt/zextras/web/iris/carbonio-admin-manage-ui/i18n"
+  install -D carbonio-admin-ui/*.json \
+    -t "${pkgdir}/opt/zextras/web/iris/carbonio-admin-ui/i18n"
+  install -D carbonio-auth-ui/*.json \
+    -t "${pkgdir}/opt/zextras/web/iris/carbonio-auth-ui/i18n"
+  install -D carbonio-calendars-ui/*.json \
+    -t "${pkgdir}/opt/zextras/web/iris/carbonio-calendars-ui/i18n"
+  install -D carbonio-chats-ui/*.json \
+    -t "${pkgdir}/opt/zextras/web/iris/carbonio-chats-ui/i18n"
+  install -D carbonio-contacts-ui/*.json \
+    -t "${pkgdir}/opt/zextras/web/iris/carbonio-contacts-ui/i18n"
+  install -D carbonio-files-ui/*.json \
+    -t "${pkgdir}/opt/zextras/web/iris/carbonio-files-ui/i18n"
+  install -D carbonio-mails-ui/*.json \
+    -t "${pkgdir}/opt/zextras/web/iris/carbonio-mails-ui/i18n"
+  install -D carbonio-shell-ui/*.json \
+    -t "${pkgdir}/opt/zextras/web/iris/carbonio-shell-ui/i18n"
+  install -D carbonio-tasks-ui/*.json \
+    -t "${pkgdir}/opt/zextras/web/iris/carbonio-tasks-ui/i18n"
+  install -D carbonio-ws-collaboration-ui/*.json \
+    -t "${pkgdir}/opt/zextras/web/iris/carbonio-ws-collaboration-ui/i18n"
+}

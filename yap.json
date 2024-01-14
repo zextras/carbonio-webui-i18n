@@ -1,0 +1,11 @@
+{
+    "name": "Zextras Carbbonio WebUI i18n",
+    "description": "All the localization resources needed by Carbonio WebUI components",
+    "buildDir": "/tmp/",
+    "output": "artifacts",
+    "projects": [
+        {
+            "name": "package"
+        }
+    ]
+}
