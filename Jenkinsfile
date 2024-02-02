@@ -112,9 +112,7 @@ pipeline {
         }
         stage('Upload To Devel') {
             when {
-                anyOf {
-                    expression { params.PLAYGROUND == true }
-                }
+                branch 'devel'
             }
             steps {
                 unstash 'artifacts-deb'

@@ -22,7 +22,6 @@ source=(
   "carbonio-chats-ui::git+${url}/carbonio-chats-ui-i18n"
   "carbonio-contacts-ui::git+${url}/carbonio-contacts-ui-i18n"
   "carbonio-files-ui::git+${url}/carbonio-files-ui-i18n"
-  "carbonio-login::git+${url}/carbonio-login-i18n"
   "carbonio-login-ui::git+${url}/carbonio-login-ui-i18n"
   "carbonio-mails-ui::git+${url}/carbonio-mails-ui-i18n"
   "carbonio-shell-ui::git+${url}/carbonio-shell-ui-i18n"
@@ -30,7 +29,6 @@ source=(
   "carbonio-ws-collaboration-ui::git+${url}/carbonio-ws-collaboration-ui-i18n"
 )
 sha256sums=('SKIP'
-  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
