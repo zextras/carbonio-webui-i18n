@@ -53,9 +53,9 @@ package() {
 
   # IRIS localizations
   install -D carbonio-admin-manage-ui/*.json \
-    -t "${pkgdir}/opt/zextras/web/iris/carbonio-admin-manage-ui/i18n"
+    -t "${pkgdir}/opt/zextras/admin/iris/carbonio-admin-console-ui/i18n"
   install -D carbonio-admin-ui/*.json \
-    -t "${pkgdir}/opt/zextras/web/iris/carbonio-admin-ui/i18n"
+    -t "${pkgdir}/opt/zextras/admin/iris/carbonio-admin-ui/i18n"
   install -D carbonio-auth-ui/*.json \
     -t "${pkgdir}/opt/zextras/web/iris/carbonio-auth-ui/i18n"
   install -D carbonio-calendars-ui/*.json \
