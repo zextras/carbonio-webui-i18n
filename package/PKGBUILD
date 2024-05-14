@@ -19,7 +19,6 @@ source=(
   "carbonio-admin-ui::git+${url}/carbonio-admin-ui-i18n"
   "carbonio-auth-ui::git+${url}/carbonio-auth-ui-i18n"
   "carbonio-calendars-ui::git+${url}/carbonio-calendars-ui-i18n"
-  "carbonio-chats-ui::git+${url}/carbonio-chats-ui-i18n"
   "carbonio-contacts-ui::git+${url}/carbonio-contacts-ui-i18n"
   "carbonio-files-ui::git+${url}/carbonio-files-ui-i18n"
   "carbonio-login-ui::git+${url}/carbonio-login-ui-i18n"
@@ -29,7 +28,6 @@ source=(
   "carbonio-ws-collaboration-ui::git+${url}/carbonio-ws-collaboration-ui-i18n"
 )
 sha256sums=('SKIP'
-  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -60,8 +58,6 @@ package() {
     -t "${pkgdir}/opt/zextras/web/iris/carbonio-auth-ui/i18n"
   install -D carbonio-calendars-ui/*.json \
     -t "${pkgdir}/opt/zextras/web/iris/carbonio-calendars-ui/i18n"
-  install -D carbonio-chats-ui/*.json \
-    -t "${pkgdir}/opt/zextras/web/iris/carbonio-chats-ui/i18n"
   install -D carbonio-contacts-ui/*.json \
     -t "${pkgdir}/opt/zextras/web/iris/carbonio-contacts-ui/i18n"
   install -D carbonio-files-ui/*.json \
