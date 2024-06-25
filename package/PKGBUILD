@@ -45,9 +45,9 @@ package() {
 
   # Login localizationtions
   install -D carbonio-admin-login-ui/*.json \
-    -t "${pkgdir}/opt/zextras/admin/login/i18n"
+    -t "${pkgdir}/opt/zextras/admin/login-i18n"
   install -D carbonio-login-ui/*.json \
-    -t "${pkgdir}/opt/zextras/web/login/i18n"
+    -t "${pkgdir}/opt/zextras/web/login-i18n"
 
   # IRIS localizations
   install -D carbonio-admin-manage-ui/*.json \
