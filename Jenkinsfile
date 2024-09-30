@@ -19,6 +19,9 @@ pipeline {
     environment {
         VERSION="${timeStamp}"
     }
+    triggers {
+	cron(env.BRANCH_NAME == 'devel' ? '0 19 * * 1-5' : '')
+	  }
     stages {
         stage('Checkout & Stash') {
             agent {
