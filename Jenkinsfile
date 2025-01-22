@@ -113,7 +113,7 @@ pipeline {
                 }
             }
         }
-        stage('Upload To Devel') {
+        stage('Upload & Promotion Config') {
             when {
                 branch 'devel'
             }
@@ -122,6 +122,7 @@ pipeline {
                 unstash 'artifacts-rpm'
 
                 script {
+                    echo "Upload to Devel"
                     def server = Artifactory.server 'zextras-artifactory'
                     def buildInfo
                     def uploadSpec
@@ -147,17 +148,9 @@ pipeline {
                     }'''
                     server.upload spec: uploadSpec, buildInfo: buildInfo, failNoOp: false
                 }
-            }
-        }
-        stage('Upload & Promotion Config') {
-            when {
-                buildingTag()
-            }
-            steps {
-                unstash 'artifacts-deb'
-                unstash 'artifacts-rpm'
 
                 script {
+                    echo "Upload to RC and Promotion Config"
                     def server = Artifactory.server 'zextras-artifactory'
                     def buildInfo
                     def uploadSpec
