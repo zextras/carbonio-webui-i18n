@@ -13,7 +13,7 @@ pipeline {
     }
     agent {
         node {
-            label 'base-agent-v2'
+            label 'base'
         }
     }
     environment {
@@ -24,11 +24,6 @@ pipeline {
     }
     stages {
         stage('Checkout & Stash') {
-            agent {
-                node {
-                    label 'base-agent-v2'
-                }
-            }
             steps {
                 checkout scm
                 stash includes: '**', name: 'project'
@@ -39,14 +34,16 @@ pipeline {
                 stage('Ubuntu') {
                     agent {
                         node {
-                            label 'yap-agent-ubuntu-20.04-v2'
+                            label 'yap-ubuntu-20-v1'
                         }
                     }
                     steps {
-                        unstash 'project'
-                        sh 'yap build ubuntu . -s -w $VERSION'
-                        stash includes: 'artifacts/*.deb',
-                        name: 'artifacts-deb'
+                        container('yap') {
+                            unstash 'project'
+                            sh 'yap build ubuntu . -s -w $VERSION'
+                            stash includes: 'artifacts/*.deb',
+                            name: 'artifacts-deb'
+                        }
                     }
                     post {
                         always {
@@ -58,18 +55,20 @@ pipeline {
                 stage('RHEL') {
                     agent {
                         node {
-                            label 'yap-agent-rocky-8-v2'
+                            label 'yap-rocky-8-v1'
                         }
                     }
                     steps {
-                        unstash 'project'
-                        sh 'yap build rocky . -s -w $VERSION'
-                        stash includes: 'artifacts/x86_64/*.rpm',
-                        name: 'artifacts-rpm'
+                        container('yap') {
+                            unstash 'project'
+                            sh 'yap build rocky . -s -w $VERSION'
+                            stash includes: 'artifacts/*.rpm',
+                            name: 'artifacts-rpm'
+                        }
                     }
                     post {
                         always {
-                            archiveArtifacts artifacts: 'artifacts/x86_64/*.rpm', fingerprint: true
+                            archiveArtifacts artifacts: 'artifacts/*.rpm', fingerprint: true
                         }
                     }
                 }
@@ -98,12 +97,12 @@ pipeline {
                                 "props": "deb.distribution=focal;deb.distribution=jammy;deb.distribution=noble;deb.component=main;deb.architecture=amd64"
                             },
                             {
-                                "pattern": "artifacts/x86_64/(carbonio-webui-i18n)-(*).x86_64.rpm",
+                                "pattern": "artifacts/(carbonio-webui-i18n)-(*).x86_64.rpm",
                                 "target": "centos8-playground/zextras/{1}/{1}-{2}.x86_64.rpm",
                                 "props": "rpm.metadata.arch=x86_64;rpm.metadata.vendor=zextras"
                             },
                             {
-                                "pattern": "artifacts/x86_64/(carbonio-webui-i18n)-(*).x86_64.rpm",
+                                "pattern": "artifacts/(carbonio-webui-i18n)-(*).x86_64.rpm",
                                 "target": "rhel9-playground/zextras/{1}/{1}-{2}.x86_64.rpm",
                                 "props": "rpm.metadata.arch=x86_64;rpm.metadata.vendor=zextras"
                             }
@@ -135,12 +134,12 @@ pipeline {
                                 "props": "deb.distribution=focal;deb.distribution=jammy;deb.distribution=noble;deb.component=main;deb.architecture=amd64"
                             },
                             {
-                                "pattern": "artifacts/x86_64/(carbonio-webui-i18n)-(*).x86_64.rpm",
+                                "pattern": "artifacts/(carbonio-webui-i18n)-(*).x86_64.rpm",
                                 "target": "centos8-devel/zextras/{1}/{1}-{2}.x86_64.rpm",
                                 "props": "rpm.metadata.arch=x86_64;rpm.metadata.vendor=zextras"
                             },
                             {
-                                "pattern": "artifacts/x86_64/(carbonio-webui-i18n)-(*).x86_64.rpm",
+                                "pattern": "artifacts/(carbonio-webui-i18n)-(*).x86_64.rpm",
                                 "target": "rhel9-devel/zextras/{1}/{1}-{2}.x86_64.rpm",
                                 "props": "rpm.metadata.arch=x86_64;rpm.metadata.vendor=zextras"
                             }
@@ -191,7 +190,7 @@ pipeline {
                     uploadSpec= '''{
                         "files": [
                             {
-                                "pattern": "artifacts/x86_64/(carbonio-webui-i18n)-(*).x86_64.rpm",
+                                "pattern": "artifacts/(carbonio-webui-i18n)-(*).x86_64.rpm",
                                 "target": "centos8-rc/zextras/{1}/{1}-{2}.x86_64.rpm",
                                 "props": "rpm.metadata.arch=x86_64;rpm.metadata.vendor=zextras"
                             }
@@ -220,7 +219,7 @@ pipeline {
                     uploadSpec= '''{
                         "files": [
                             {
-                                "pattern": "artifacts/x86_64/(carbonio-webui-i18n)-(*).x86_64.rpm",
+                                "pattern": "artifacts/(carbonio-webui-i18n)-(*).x86_64.rpm",
                                 "target": "rhel9-rc/zextras/{1}/{1}-{2}.x86_64.rpm",
                                 "props": "rpm.metadata.arch=x86_64;rpm.metadata.vendor=zextras"
                             }
