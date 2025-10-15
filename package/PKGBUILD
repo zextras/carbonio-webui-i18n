@@ -28,7 +28,7 @@ source=(
   "carbonio-tasks-ui::git+${url}/carbonio-tasks-ui-i18n"
   "carbonio-ws-collaboration-ui::git+${url}/carbonio-ws-collaboration-ui-i18n"
 )
-sha256sums=('SKIP'
+sha256sums=(
   'SKIP'
   'SKIP'
   'SKIP'
@@ -40,7 +40,9 @@ sha256sums=('SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
-  'SKIP')
+  'SKIP'
+  'SKIP'
+)
 
 package() {
   cd "${srcdir}"
