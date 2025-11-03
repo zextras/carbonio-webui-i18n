@@ -15,7 +15,6 @@ priority="optional"
 arch=('x86_64')
 source=(
   "carbonio-admin-login-ui::git+${url}/carbonio-admin-login-ui-i18n"
-  "carbonio-admin-manage-ui::git+${url}/carbonio-admin-manage-ui-i18n"
   "carbonio-admin-ui::git+${url}/carbonio-admin-ui-i18n"
   "carbonio-auth-ui::git+${url}/carbonio-auth-ui-i18n"
   "carbonio-calendars-ui::git+${url}/carbonio-calendars-ui-i18n"
@@ -41,7 +40,6 @@ sha256sums=(
   'SKIP'
   'SKIP'
   'SKIP'
-  'SKIP'
 )
 
 package() {
@@ -54,8 +52,6 @@ package() {
     -t "${pkgdir}/opt/zextras/web/login-i18n"
 
   # IRIS localizations
-  install -D carbonio-admin-manage-ui/*.json \
-    -t "${pkgdir}/opt/zextras/admin/iris/carbonio-admin-console-ui/i18n"
   install -D carbonio-admin-ui/*.json \
     -t "${pkgdir}/opt/zextras/admin/iris/carbonio-admin-ui/i18n"
   install -D carbonio-auth-ui/*.json \
