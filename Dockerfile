@@ -12,7 +12,6 @@ RUN --mount=type=secret,id=ssh_key,target=/tmp/id_rsa \
     ssh-keyscan github.com > /root/.ssh/known_hosts && \
     git clone --depth 1 git@github.com:zextras/carbonio-admin-login-ui-i18n.git carbonio-admin-login-ui && \
     git clone --depth 1 git@github.com:zextras/carbonio-admin-ui-i18n.git carbonio-admin-ui && \
-    git clone --depth 1 git@github.com:zextras/carbonio-admin-console-ui-i18n.git carbonio-admin-console-ui && \
     git clone --depth 1 git@github.com:zextras/carbonio-auth-ui-i18n.git carbonio-auth-ui && \
     git clone --depth 1 git@github.com:zextras/carbonio-calendars-ui-i18n.git carbonio-calendars-ui && \
     git clone --depth 1 git@github.com:zextras/carbonio-contacts-ui-i18n.git carbonio-contacts-ui && \
@@ -26,9 +25,8 @@ RUN --mount=type=secret,id=ssh_key,target=/tmp/id_rsa \
 
 # Create directory structure and install localization files
 RUN mkdir -p /opt/zextras/admin/login-i18n \
+    /opt/zextras/admin/iris/i18n \
     /opt/zextras/web/login-i18n \
-    /opt/zextras/admin/iris/carbonio-admin-ui/i18n \
-    /opt/zextras/admin/iris/carbonio-admin-console-ui/i18n \
     /opt/zextras/web/iris/carbonio-auth-ui/i18n \
     /opt/zextras/web/iris/carbonio-calendars-ui/i18n \
     /opt/zextras/web/iris/carbonio-contacts-ui/i18n \
@@ -44,7 +42,7 @@ RUN cp carbonio-admin-login-ui/*.json /opt/zextras/admin/login-i18n/ && \
     cp carbonio-login-ui/*.json /opt/zextras/web/login-i18n/
 
 # Copy admin IRIS localizations
-RUN cp carbonio-admin-ui/*.json /opt/zextras/admin/iris/carbonio-admin-ui/i18n/
+RUN cp carbonio-admin-ui/*.json /opt/zextras/admin/iris/i18n/
 
 # Copy web IRIS localizations
 RUN cp carbonio-auth-ui/*.json /opt/zextras/web/iris/carbonio-auth-ui/i18n/ && \
