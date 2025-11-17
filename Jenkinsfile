@@ -44,48 +44,30 @@ pipeline {
     }
 
     stages {
-        stage('Checkout & Stash') {
+        stage('Setup') {
             steps {
                 checkout scm
                 script {
                     gitMetadata()
+                    properties(defaultPipelineProperties())
                 }
             }
         }
 
-        stage('Publish containers') {
-            when {
-                expression {
-                    return isBuildingTag() || env.BRANCH_NAME == 'devel'
-                }
-            }
+        stage('Publish containers - devel') {
             steps {
-                container('dind') {
-                    withDockerRegistry(credentialsId: 'private-registry', url: 'https://registry.dev.zextras.com') {
-                        script {
-                            Set<String> tagVersions = []
-                            if (isBuildingTag()) {
-                                tagVersions = [env.TAG_NAME, 'stable']
-                            } else {
-                                tagVersions = ['devel', 'latest']
-                            }
-                            dockerHelper.buildImage([
-                                    dockerfile: 'Dockerfile',
-                                    imageName : 'registry.dev.zextras.com/dev/carbonio-webui-i18n',
-                                    imageTags : tagVersions,
-                                    ocLabels  : [
-                                            title          : 'Carbonio WebUI Localizations',
-                                            description: 'Carbonio WebUI Localizations image',
-                                            version        : tagVersions[0]
-                                    ],
-                                    platforms: ['linux/amd64', 'linux/arm64'],
-                                    secrets: [
-                                        'ssh_key': '/root/.ssh/id_rsa'
-                                    ],
-                            ])
-                        }
-                    }
-                }
+                dockerStage([
+                    dockerfile: 'Dockerfile',
+                    imageName: 'registry.dev.zextras.com/dev/carbonio-webui-i18n',
+                    ocLabels: [
+                        title          : 'Carbonio WebUI Localizations',
+                        description: 'Carbonio WebUI Localizations image',
+                    ],
+                    platforms: ['linux/amd64', 'linux/arm64'],
+                    secrets: [
+                        'ssh_key': '/root/.ssh/id_rsa'
+                    ],
+                ])
             }
         }
 
@@ -93,8 +75,9 @@ pipeline {
             steps {
                 echo 'Building deb/rpm packages'
                 buildStage([
-                    buildFlags: '-s',
+                    buildFlags: '-s -w $VERSION',
                     rockySinglePkg: true,
+                    skipTsOverride: true,
                     ubuntuSinglePkg: true,
                 ])
             }
@@ -104,7 +87,7 @@ pipeline {
         {
             steps {
                 uploadStage(
-                    packages: yapHelper.getPackageNames(),
+                    packages: yapHelper.resolvePackageNames(),
                     rockySinglePkg: true,
                     ubuntuSinglePkg: true,
                 )
