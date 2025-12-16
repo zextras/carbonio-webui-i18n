@@ -27,20 +27,11 @@ pipeline {
         skipDefaultCheckout()
         buildDiscarder(logRotator(numToKeepStr: '5'))
         timeout(time: 1, unit: 'HOURS')
-    }
-
-    parameters {
-        booleanParam defaultValue: false,
-        description: 'Whether to upload the packages in playground repositories',
-        name: 'PLAYGROUND'
+        overrideIndexTriggers(false)
     }
 
     tools {
         jfrog 'jfrog-cli'
-    }
-
-    triggers {
-	    cron(env.BRANCH_NAME == 'devel' ? '0 19 * * 1-5' : '')
     }
 
     stages {
@@ -49,7 +40,22 @@ pipeline {
                 checkout scm
                 script {
                     gitMetadata()
-                    properties(defaultPipelineProperties())
+                    // Merge library properties with custom properties
+                    properties(
+                        defaultPipelineProperties() + [
+                            buildDiscarder(logRotator(numToKeepStr: '5')),
+                            parameters([
+                                booleanParam(
+                                    defaultValue: false,
+                                    description: 'Whether to upload the packages in playground repositories',
+                                    name: 'PLAYGROUND'
+                                )
+                            ]),
+                            pipelineTriggers([
+                                cron(env.BRANCH_NAME == 'devel' ? '0 19 * * 1-5' : '')
+                            ])
+                        ]
+                    )
                 }
             }
         }
