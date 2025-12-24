@@ -1,49 +1,13 @@
-# carbonio-webui-i18n
+# 🌍 Internationalization (i18n) Repository
 
-![Contributors](https://img.shields.io/github/contributors/zextras/carbonio-webui-i18n "Contributors")
-![Activity](https://img.shields.io/github/commit-activity/m/zextras/carbonio-webui-i18n "Activity") ![License](https://img.shields.io/badge/license-AGPL%203-green
-"License")
-![Project](https://img.shields.io/badge/project-carbonio-informational
-"Project")
-[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/zextras.svg?style=social&label=Follow%20%40zextras)](https://twitter.com/zextras)
+This repository contains translation files for internationalization support.
 
-This repository contains all the resources needed to build a package with all
-the localization resources for the web ui components of Carbonio.
+Each JSON file in this repository represents translations for a specific locale. The files are named using standard locale codes (e.g., `en.json`, `es.json`, `fr.json`).
 
-## Overview
+## 🤝 Contributing
 
-Carbonio WebUI i18n is a localization package that aggregates internationalization resources for various Carbonio web interface components. It provides translation files in JSON format for multiple Carbonio UI modules including:
+We welcome contributions to improve and expand our translations! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute.
 
-- Admin Login UI
-- Admin Manage UI
-- Admin UI
-- Auth UI
-- Calendars UI
-- Contacts UI
-- Files UI
-- Login UI
-- Mails UI
-- Search UI
-- Shell UI
-- Tasks UI
-- Work Space Collaboration UI
+## ⚖️ License
 
-## Structure
-
-The package builds localization resources for two main environments:
-- **Web UI**: Components located under `/opt/zextras/web/iris/`
-- **Admin UI**: Components located under `/opt/zextras/admin/iris/`
-
-Each UI component receives its own dedicated i18n directory with JSON translation files.
-
-## Build Configuration
-
-The project uses a PKGBUILD file to manage the build process and aggregate localization files from multiple source repositories. The yap.json configuration file defines the build parameters and project structure.
-
-## Installation
-
-The package installs localization files to specific paths under `/opt/zextras/` for both web and admin interfaces, making them available to the Carbonio application at runtime.
-
-## License
-
-See [COPYING](COPYING) file for details
+This project is licensed under the GNU Affero General Public License v3.0 - see the [COPYING](COPYING) file for details.
