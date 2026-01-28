@@ -24,10 +24,12 @@ source=(
   "carbonio-mails-ui::git+${url}/carbonio-mails-ui-i18n"
   "carbonio-search-ui::git+${url}/carbonio-search-ui-i18n"
   "carbonio-shell-ui::git+${url}/carbonio-shell-ui-i18n"
+  "carbonio-storages-ui::git+${url}/carbonio-storages-ui-i18n"
   "carbonio-tasks-ui::git+${url}/carbonio-tasks-ui-i18n"
   "carbonio-ws-collaboration-ui::git+${url}/carbonio-ws-collaboration-ui-i18n"
 )
 sha256sums=(
+  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -68,6 +70,8 @@ package() {
     -t "${pkgdir}/opt/zextras/web/iris/carbonio-search-ui/i18n"
   install -D carbonio-shell-ui/*.json \
     -t "${pkgdir}/opt/zextras/web/iris/carbonio-shell-ui/i18n"
+  install -D carbonio-storages-ui/*.json \
+    -t "${pkgdir}/opt/zextras/web/iris/carbonio-storages-ui/i18n"
   install -D carbonio-tasks-ui/*.json \
     -t "${pkgdir}/opt/zextras/web/iris/carbonio-tasks-ui/i18n"
   install -D carbonio-ws-collaboration-ui/*.json \

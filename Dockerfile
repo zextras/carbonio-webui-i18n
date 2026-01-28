@@ -20,6 +20,7 @@ RUN --mount=type=secret,id=ssh_key,target=/tmp/id_rsa \
     git clone --depth 1 git@github.com:zextras/carbonio-mails-ui-i18n.git carbonio-mails-ui && \
     git clone --depth 1 git@github.com:zextras/carbonio-search-ui-i18n.git carbonio-search-ui && \
     git clone --depth 1 git@github.com:zextras/carbonio-shell-ui-i18n.git carbonio-shell-ui && \
+    git clone --depth 1 git@github.com:zextras/carbonio-storages-ui-i18n.git carbonio-storages-ui && \
     git clone --depth 1 git@github.com:zextras/carbonio-tasks-ui-i18n.git carbonio-tasks-ui && \
     git clone --depth 1 git@github.com:zextras/carbonio-ws-collaboration-ui-i18n.git carbonio-ws-collaboration-ui
 
@@ -34,6 +35,7 @@ RUN mkdir -p /opt/zextras/admin/login-i18n \
     /opt/zextras/web/iris/carbonio-mails-ui/i18n \
     /opt/zextras/web/iris/carbonio-search-ui/i18n \
     /opt/zextras/web/iris/carbonio-shell-ui/i18n \
+    /opt/zextras/web/iris/carbonio-storages-ui/i18n \
     /opt/zextras/web/iris/carbonio-tasks-ui/i18n \
     /opt/zextras/web/iris/carbonio-ws-collaboration-ui/i18n
 
@@ -52,6 +54,7 @@ RUN cp carbonio-auth-ui/*.json /opt/zextras/web/iris/carbonio-auth-ui/i18n/ && \
     cp carbonio-mails-ui/*.json /opt/zextras/web/iris/carbonio-mails-ui/i18n/ && \
     cp carbonio-search-ui/*.json /opt/zextras/web/iris/carbonio-search-ui/i18n/ && \
     cp carbonio-shell-ui/*.json /opt/zextras/web/iris/carbonio-shell-ui/i18n/ && \
+    cp carbonio-storages-ui/*.json /opt/zextras/web/iris/carbonio-storages-ui/i18n/ && \
     cp carbonio-tasks-ui/*.json /opt/zextras/web/iris/carbonio-tasks-ui/i18n/ && \
     cp carbonio-ws-collaboration-ui/*.json /opt/zextras/web/iris/carbonio-ws-collaboration-ui/i18n/
 
