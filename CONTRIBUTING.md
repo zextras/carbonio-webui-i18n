@@ -8,8 +8,6 @@ Translation contributions are welcomed from everyone! Whether you're fixing a ty
 
 ## 🖊️ How to Contribute
 
-To contribute translations or to get in touch with the project maintainers, please visit:
-
-**https://zextras.com/carbonio-ce-contribute**
+To contribute translations or to get in touch with the project maintainers, please visit: **[carbonio-ce-contribute](https://zextras.com/carbonio-ce-contribute)**
 
 On this page, you'll find information on how to contact the responsible parties and learn more about the contribution process.
