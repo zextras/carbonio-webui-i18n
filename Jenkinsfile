@@ -1,16 +1,11 @@
 library(
-    identifier: 'jenkins-lib-common@1.3.4',
+    identifier: 'jenkins-lib-common@1.7.3',
     retriever: modernSCM([
         $class: 'GitSCMSource',
         remote: 'git@github.com:zextras/jenkins-lib-common.git',
         credentialsId: 'jenkins-integration-with-github-account'
     ])
 )
-String timeStamp = Calendar.getInstance().getTime().format('YYYYMMdd',TimeZone.getTimeZone('CST'))
-
-boolean isBuildingTag() {
-    return env.TAG_NAME ? true : false
-}
 
 pipeline {
     agent {
@@ -19,13 +14,8 @@ pipeline {
         }
     }
 
-    environment {
-        VERSION="${timeStamp}"
-    }
-
     options {
         skipDefaultCheckout()
-        buildDiscarder(logRotator(numToKeepStr: '5'))
         timeout(time: 1, unit: 'HOURS')
         overrideIndexTriggers(false)
     }
@@ -39,6 +29,7 @@ pipeline {
             steps {
                 checkout scm
                 script {
+                    env.VERSION = Calendar.getInstance().getTime().format('YYYYMMdd', TimeZone.getTimeZone('UTC'))
                     gitMetadata()
                     // Merge library properties with custom properties
                     properties(
@@ -61,12 +52,18 @@ pipeline {
         }
 
         stage('Publish containers - devel') {
+            when {
+                anyOf {
+                    branch 'devel'
+                    buildingTag()
+                }
+            }
             steps {
                 dockerStage([
                     dockerfile: 'Dockerfile',
                     imageName: 'registry.dev.zextras.com/dev/carbonio-webui-i18n',
                     ocLabels: [
-                        title          : 'Carbonio WebUI Localizations',
+                        title      : 'Carbonio WebUI Localizations',
                         description: 'Carbonio WebUI Localizations image',
                     ],
                     platforms: ['linux/amd64', 'linux/arm64'],
@@ -81,7 +78,7 @@ pipeline {
             steps {
                 echo 'Building deb/rpm packages'
                 buildStage([
-                    buildFlags: '-s -w $VERSION',
+                    buildFlags: "-s -w ${env.VERSION}",
                     rockySinglePkg: true,
                     skipTsOverride: true,
                     ubuntuSinglePkg: true,
@@ -89,8 +86,13 @@ pipeline {
             }
         }
 
-        stage('Upload artifacts')
-        {
+        stage('Upload artifacts') {
+            when {
+                anyOf {
+                    branch 'devel'
+                    buildingTag()
+                }
+            }
             steps {
                 uploadStage(
                     packages: yapHelper.resolvePackageNames(),
@@ -98,6 +100,15 @@ pipeline {
                     ubuntuSinglePkg: true,
                 )
             }
+        }
+    }
+
+    post {
+        always {
+            cleanWs()
+        }
+        failure {
+            echo 'Pipeline failed'
         }
     }
 }
