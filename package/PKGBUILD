@@ -12,7 +12,7 @@ license=(
 url="https://github.com/zextras"
 section="mail"
 priority="optional"
-arch=('x86_64')
+arch=('any')
 source=(
   "carbonio-admin-login-ui::git+${url}/carbonio-admin-login-ui-i18n"
   "carbonio-admin-ui::git+${url}/carbonio-admin-ui-i18n"
