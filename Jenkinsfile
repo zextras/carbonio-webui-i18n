@@ -1,5 +1,5 @@
 library(
-    identifier: 'jenkins-lib-common@1.7.5',
+    identifier: 'jenkins-lib-common@v2.5.0',
     retriever: modernSCM([
         $class: 'GitSCMSource',
         remote: 'git@github.com:zextras/jenkins-lib-common.git',
@@ -100,15 +100,6 @@ pipeline {
                     ubuntuSinglePkg: true,
                 )
             }
-        }
-    }
-
-    post {
-        always {
-            cleanWs()
-        }
-        failure {
-            echo 'Pipeline failed'
         }
     }
 }
