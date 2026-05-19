@@ -3,6 +3,8 @@ FROM --platform=$BUILDPLATFORM alpine/git:v2.49.1 AS builder
 
 WORKDIR /tmp/build
 
+COPY supported-locales.json /tmp/build/supported-locales.json
+
 # Clone all i18n repositories
 RUN --mount=type=secret,id=ssh_key,target=/tmp/id_rsa \
     mkdir -p /root/.ssh && \
@@ -44,7 +46,8 @@ RUN cp carbonio-admin-login-ui/*.json /opt/zextras/admin/login-i18n/ && \
     cp carbonio-login-ui/*.json /opt/zextras/web/login-i18n/
 
 # Copy admin IRIS localizations
-RUN cp carbonio-admin-ui/*.json /opt/zextras/admin/iris/i18n/
+RUN cp carbonio-admin-ui/*.json /opt/zextras/admin/iris/i18n/ && \
+    cp supported-locales.json /opt/zextras/admin/iris/i18n/
 
 # Copy web IRIS localizations
 RUN cp carbonio-auth-ui/*.json /opt/zextras/web/iris/carbonio-auth-ui/i18n/ && \
@@ -54,6 +57,7 @@ RUN cp carbonio-auth-ui/*.json /opt/zextras/web/iris/carbonio-auth-ui/i18n/ && \
     cp carbonio-mails-ui/*.json /opt/zextras/web/iris/carbonio-mails-ui/i18n/ && \
     cp carbonio-search-ui/*.json /opt/zextras/web/iris/carbonio-search-ui/i18n/ && \
     cp carbonio-shell-ui/*.json /opt/zextras/web/iris/carbonio-shell-ui/i18n/ && \
+    cp supported-locales.json /opt/zextras/web/iris/carbonio-shell-ui/i18n/ && \
     cp carbonio-storages-ui/*.json /opt/zextras/web/iris/carbonio-storages-ui/i18n/ && \
     cp carbonio-tasks-ui/*.json /opt/zextras/web/iris/carbonio-tasks-ui/i18n/ && \
     cp carbonio-ws-collaboration-ui/*.json /opt/zextras/web/iris/carbonio-ws-collaboration-ui/i18n/
