@@ -14,6 +14,7 @@ section="mail"
 priority="optional"
 arch=('x86_64')
 source=(
+  "../supported-locales.json"
   "carbonio-admin-login-ui::git+${url}/carbonio-admin-login-ui-i18n"
   "carbonio-admin-ui::git+${url}/carbonio-admin-ui-i18n"
   "carbonio-auth-ui::git+${url}/carbonio-auth-ui-i18n"
@@ -29,6 +30,7 @@ source=(
   "carbonio-ws-collaboration-ui::git+${url}/carbonio-ws-collaboration-ui-i18n"
 )
 sha256sums=(
+  '6dae476970e5de322f4c6f378b140577f6b42ecb0467c7fc4629fdc952042df3'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -56,6 +58,8 @@ package() {
   # IRIS localizations
   install -D carbonio-admin-ui/*.json \
     -t "${pkgdir}/opt/zextras/admin/iris/i18n"
+  install -D supported-locales.json \
+    -t "${pkgdir}/opt/zextras/admin/iris/i18n"
   install -D carbonio-auth-ui/*.json \
     -t "${pkgdir}/opt/zextras/web/iris/carbonio-auth-ui/i18n"
   install -D carbonio-calendars-ui/*.json \
@@ -69,6 +73,8 @@ package() {
   install -D carbonio-search-ui/*.json \
     -t "${pkgdir}/opt/zextras/web/iris/carbonio-search-ui/i18n"
   install -D carbonio-shell-ui/*.json \
+    -t "${pkgdir}/opt/zextras/web/iris/carbonio-shell-ui/i18n"
+  install -D supported-locales.json \
     -t "${pkgdir}/opt/zextras/web/iris/carbonio-shell-ui/i18n"
   install -D carbonio-storages-ui/*.json \
     -t "${pkgdir}/opt/zextras/web/iris/carbonio-storages-ui/i18n"
