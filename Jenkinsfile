@@ -89,18 +89,11 @@ pipeline {
         }
 
         stage('Upload artifacts') {
-            when {
-                anyOf {
-                    branch 'devel'
-                    buildingTag()
-                }
-            }
             tools {
                 jfrog 'jfrog-cli'
             }
             steps {
                 uploadStage(
-                    packages: yapHelper.resolvePackageNames(),
                     rockySinglePkg: true,
                     ubuntuSinglePkg: true,
                 )
