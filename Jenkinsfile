@@ -51,12 +51,6 @@ pipeline {
         }
 
         stage('Publish containers - devel') {
-            when {
-                anyOf {
-                    branch 'main'
-                    buildingTag()
-                }
-            }
             steps {
                 dockerStage([
                     dockerfile: 'Dockerfile',
