@@ -17,11 +17,11 @@ pipeline {
     }
 
     options {
+        buildDiscarder(logRotator(numToKeepStr: '5'))
+        disableConcurrentBuilds()
+        overrideIndexTriggers(false)
         skipDefaultCheckout()
         timeout(time: 1, unit: 'HOURS')
-        overrideIndexTriggers(false)
-        disableConcurrentBuilds()
-        buildDiscarder(logRotator(numToKeepStr: '5'))
     }
 
     parameters {
