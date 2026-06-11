@@ -1,5 +1,5 @@
 # Build stage - clone and organize i18n files
-FROM --platform=$BUILDPLATFORM alpine/git:v2.49.1 AS builder
+FROM --platform=$BUILDPLATFORM docker.io/alpine/git:v2.49.1 AS builder
 
 WORKDIR /tmp/build
 
@@ -59,7 +59,7 @@ RUN cp carbonio-auth-ui/*.json /opt/zextras/web/iris/carbonio-auth-ui/i18n/ && \
     cp carbonio-ws-collaboration-ui/*.json /opt/zextras/web/iris/carbonio-ws-collaboration-ui/i18n/
 
 # Final stage - minimal runtime image
-FROM alpine:3.22.2
+FROM docker.io/alpine:3.22.2
 
 # Copy only the necessary files from builder
 COPY --from=builder /opt/zextras /opt/zextras
