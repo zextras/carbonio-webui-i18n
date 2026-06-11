@@ -7,6 +7,8 @@ library(
     ])
 )
 
+properties(defaultPipelineProperties())
+
 pipeline {
     agent {
         node {
@@ -18,10 +20,16 @@ pipeline {
         skipDefaultCheckout()
         timeout(time: 1, unit: 'HOURS')
         overrideIndexTriggers(false)
+        disableConcurrentBuilds()
+        buildDiscarder(logRotator(numToKeepStr: '5'))
     }
 
-    tools {
-        jfrog 'jfrog-cli'
+    parameters {
+        booleanParam(
+            defaultValue: false,
+            description: 'Whether to upload the packages in playground repositories',
+            name: 'PLAYGROUND'
+        )
     }
 
     stages {
@@ -31,7 +39,6 @@ pipeline {
                 script {
                     env.VERSION = Calendar.getInstance().getTime().format('YYYYMMdd', TimeZone.getTimeZone('UTC'))
                     gitMetadata()
-                    // Merge library properties with custom properties
                     properties(
                         defaultPipelineProperties() + [
                             buildDiscarder(logRotator(numToKeepStr: '5')),
@@ -92,6 +99,9 @@ pipeline {
                     branch 'devel'
                     buildingTag()
                 }
+            }
+            tools {
+                jfrog 'jfrog-cli'
             }
             steps {
                 uploadStage(
