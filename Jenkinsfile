@@ -37,24 +37,9 @@ pipeline {
             steps {
                 checkout scm
                 script {
-                    env.VERSION = Calendar.getInstance().getTime().format('YYYYMMdd', TimeZone.getTimeZone('UTC'))
-                    gitMetadata()
-                    properties(
-                        defaultPipelineProperties() + [
-                            buildDiscarder(logRotator(numToKeepStr: '5')),
-                            parameters([
-                                booleanParam(
-                                    defaultValue: false,
-                                    description: 'Whether to upload the packages in playground repositories',
-                                    name: 'PLAYGROUND'
-                                )
-                            ]),
-                            pipelineTriggers([
-                                cron(env.BRANCH_NAME == 'devel' ? '0 19 * * 1-5' : '')
-                            ])
-                        ]
-                    )
+                    env.VERSION = env.TAG_NAME ? env.TAG_NAME.replaceAll('^v', '') : '0.0.0'
                 }
+                gitMetadata()
             }
         }
 
