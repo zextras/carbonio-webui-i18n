@@ -36,9 +36,6 @@ pipeline {
         stage('Setup') {
             steps {
                 checkout scm
-                script {
-                    env.VERSION = env.TAG_NAME ? env.TAG_NAME.replaceAll('^v', '') : '0.0.0'
-                }
                 gitMetadata()
             }
         }
@@ -80,7 +77,7 @@ pipeline {
             steps {
                 echo 'Building deb/rpm packages'
                 buildStage([
-                    buildFlags: "-s -w ${env.VERSION}",
+                    buildFlags: '-s',
                     rockySinglePkg: true,
                     skipTsOverride: true,
                     ubuntuSinglePkg: true,
