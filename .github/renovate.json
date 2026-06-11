@@ -3,5 +3,14 @@
   "extends": [
     "github>zextras/infra-renovate-config",
     "github>zextras/infra-renovate-config:docker"
+  ],
+  "packageRules": [
+    {
+      "description": "Auto-merge minor and patch updates for i18n dep repos",
+      "matchDatasources": ["github-tags"],
+      "matchPackageNames": ["/^zextras\\/carbonio-.*-i18n$/"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
+    }
   ]
 }
