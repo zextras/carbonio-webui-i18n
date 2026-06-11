@@ -43,10 +43,20 @@ pipeline {
             }
         }
 
+        stage('Skip CI') {
+            steps {
+                script { semanticRelease.guard() }
+            }
+        }
+
+        stage('Security Scan') {
+            steps { gitleaksStage() }
+        }
+
         stage('Publish containers - devel') {
             when {
                 anyOf {
-                    branch 'devel'
+                    branch 'main'
                     buildingTag()
                 }
             }
@@ -94,6 +104,12 @@ pipeline {
                     rockySinglePkg: true,
                     ubuntuSinglePkg: true,
                 )
+            }
+        }
+
+        stage('Semantic Release') {
+            steps {
+                semanticRelease()
             }
         }
     }
