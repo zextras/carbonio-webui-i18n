@@ -1,5 +1,5 @@
 library(
-    identifier: 'jenkins-lib-common@v4.8.1',
+    identifier: 'jenkins-lib-common@v4.9.1',
     retriever: modernSCM([
         $class: 'GitSCMSource',
         remote: 'git@github.com:zextras/jenkins-lib-common.git',
