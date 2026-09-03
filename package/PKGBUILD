@@ -25,7 +25,7 @@ source=(
   "carbonio-mails-ui::git+${url}/carbonio-mails-ui-i18n#tag=v1.0.2" # renovate: datasource=github-tags depName=zextras/carbonio-mails-ui-i18n
   "carbonio-search-ui::git+${url}/carbonio-search-ui-i18n#tag=v1.0.2" # renovate: datasource=github-tags depName=zextras/carbonio-search-ui-i18n
   "carbonio-shell-ui::git+${url}/carbonio-shell-ui-i18n#tag=v1.0.0" # renovate: datasource=github-tags depName=zextras/carbonio-shell-ui-i18n
-  "carbonio-storages-ui::git+${url}/carbonio-storages-ui-i18n#tag=v1.0.0" # renovate: datasource=github-tags depName=zextras/carbonio-storages-ui-i18n
+  "carbonio-storages-ui::git+${url}/carbonio-storages-ui-i18n#tag=v1.0.1" # renovate: datasource=github-tags depName=zextras/carbonio-storages-ui-i18n
   "carbonio-tasks-ui::git+${url}/carbonio-tasks-ui-i18n#tag=v1.0.0" # renovate: datasource=github-tags depName=zextras/carbonio-tasks-ui-i18n
   "carbonio-ws-collaboration-ui::git+${url}/carbonio-ws-collaboration-ui-i18n#tag=v1.0.0" # renovate: datasource=github-tags depName=zextras/carbonio-ws-collaboration-ui-i18n
 )
