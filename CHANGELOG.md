@@ -1,3 +1,9 @@
+## [1.0.1](https://github.com/zextras/carbonio-webui-i18n/compare/v1.0.0...v1.0.1) (2026-09-03)
+
+### Bug Fixes
+
+* **renovate:** scope alpine approval bypass to minor/patch only ([d080933](https://github.com/zextras/carbonio-webui-i18n/commit/d08093328a713230241bacff0f04eb86785f9149))
+
 ## [1.0.0](https://github.com/zextras/carbonio-webui-i18n/compare/v0.0.1...v1.0.0) (2026-06-11)
 
 ### ⚠ BREAKING CHANGES
