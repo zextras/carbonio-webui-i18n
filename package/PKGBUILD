@@ -22,7 +22,7 @@ source=(
   "carbonio-contacts-ui::git+${url}/carbonio-contacts-ui-i18n#tag=v1.0.0" # renovate: datasource=github-tags depName=zextras/carbonio-contacts-ui-i18n
   "carbonio-files-ui::git+${url}/carbonio-files-ui-i18n#tag=v1.0.2" # renovate: datasource=github-tags depName=zextras/carbonio-files-ui-i18n
   "carbonio-login-ui::git+${url}/carbonio-login-ui-i18n#tag=v1.0.2" # renovate: datasource=github-tags depName=zextras/carbonio-login-ui-i18n
-  "carbonio-mails-ui::git+${url}/carbonio-mails-ui-i18n#tag=v1.0.0" # renovate: datasource=github-tags depName=zextras/carbonio-mails-ui-i18n
+  "carbonio-mails-ui::git+${url}/carbonio-mails-ui-i18n#tag=v1.0.2" # renovate: datasource=github-tags depName=zextras/carbonio-mails-ui-i18n
   "carbonio-search-ui::git+${url}/carbonio-search-ui-i18n#tag=v1.0.0" # renovate: datasource=github-tags depName=zextras/carbonio-search-ui-i18n
   "carbonio-shell-ui::git+${url}/carbonio-shell-ui-i18n#tag=v1.0.0" # renovate: datasource=github-tags depName=zextras/carbonio-shell-ui-i18n
   "carbonio-storages-ui::git+${url}/carbonio-storages-ui-i18n#tag=v1.0.0" # renovate: datasource=github-tags depName=zextras/carbonio-storages-ui-i18n
