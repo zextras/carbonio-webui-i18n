@@ -1,5 +1,5 @@
 # Build stage - clone and organize i18n files
-FROM --platform=$BUILDPLATFORM docker.io/alpine/git:v2.49.1 AS builder
+FROM --platform=$BUILDPLATFORM docker.io/alpine/git:v2.54.0 AS builder
 
 WORKDIR /tmp/build
 
