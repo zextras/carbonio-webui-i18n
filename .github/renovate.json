@@ -11,6 +11,18 @@
       "matchPackageNames": ["/^zextras\\/carbonio-.*-i18n$/"],
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true
+    },
+    {
+      "description": "Auto-merge minor and patch updates for Docker base images",
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
+    },
+    {
+      "description": "Skip dashboard approval for alpine so automerge above can apply",
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["alpine"],
+      "dependencyDashboardApproval": false
     }
   ]
 }
