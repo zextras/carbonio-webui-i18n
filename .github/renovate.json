@@ -13,15 +13,16 @@
       "automerge": true
     },
     {
-      "description": "Auto-merge minor and patch updates for Docker base images",
+      "description": "Auto-merge minor and patch updates for Docker dependencies",
       "matchDatasources": ["docker"],
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true
     },
     {
-      "description": "Skip dashboard approval for alpine so automerge above can apply",
+      "description": "Skip dashboard approval for alpine minor/patch so automerge above can apply",
       "matchDatasources": ["docker"],
       "matchPackageNames": ["alpine"],
+      "matchUpdateTypes": ["minor", "patch"],
       "dependencyDashboardApproval": false
     }
   ]
