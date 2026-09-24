@@ -1,3 +1,9 @@
+## [1.0.4](https://github.com/zextras/carbonio-webui-i18n/compare/v1.0.3...v1.0.4) (2026-09-24)
+
+### Bug Fixes
+
+* **release:** stamp pkgver from the released version ([4cf8e57](https://github.com/zextras/carbonio-webui-i18n/commit/4cf8e5744c98610107a0bf9ec3b52ed9b2b1f9d6)), closes [#50](https://github.com/zextras/carbonio-webui-i18n/issues/50) [#1](https://github.com/zextras/carbonio-webui-i18n/issues/1)
+
 ## [1.0.3](https://github.com/zextras/carbonio-webui-i18n/compare/v1.0.2...v1.0.3) (2026-09-24)
 
 ### Bug Fixes
