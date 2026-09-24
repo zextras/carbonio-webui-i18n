@@ -1,3 +1,9 @@
+## [1.0.3](https://github.com/zextras/carbonio-webui-i18n/compare/v1.0.2...v1.0.3) (2026-09-24)
+
+### Bug Fixes
+
+* **release:** remove chore catch-all that voided chore(deps) releases ([25ebfd4](https://github.com/zextras/carbonio-webui-i18n/commit/25ebfd42d51342a818d9c345585bdc129e41af58)), closes [#46](https://github.com/zextras/carbonio-webui-i18n/issues/46)
+
 ## [1.0.2](https://github.com/zextras/carbonio-webui-i18n/compare/v1.0.1...v1.0.2) (2026-09-24)
 
 ### Bug Fixes
