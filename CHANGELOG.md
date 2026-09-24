@@ -1,3 +1,9 @@
+## [1.0.2](https://github.com/zextras/carbonio-webui-i18n/compare/v1.0.1...v1.0.2) (2026-09-24)
+
+### Bug Fixes
+
+* **release:** treat chore(deps) commits as patch releases ([#59](https://github.com/zextras/carbonio-webui-i18n/issues/59)) ([58a0c14](https://github.com/zextras/carbonio-webui-i18n/commit/58a0c14f70c7fe56ed93bc6a41b039572894203f))
+
 ## [1.0.1](https://github.com/zextras/carbonio-webui-i18n/compare/v1.0.0...v1.0.1) (2026-09-03)
 
 ### Bug Fixes
