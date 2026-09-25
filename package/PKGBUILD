@@ -27,7 +27,7 @@ source=(
   "carbonio-shell-ui::git+${url}/carbonio-shell-ui-i18n#tag=v1.0.2" # renovate: datasource=github-tags depName=zextras/carbonio-shell-ui-i18n
   "carbonio-storages-ui::git+${url}/carbonio-storages-ui-i18n#tag=v1.0.4" # renovate: datasource=github-tags depName=zextras/carbonio-storages-ui-i18n
   "carbonio-tasks-ui::git+${url}/carbonio-tasks-ui-i18n#tag=v1.0.2" # renovate: datasource=github-tags depName=zextras/carbonio-tasks-ui-i18n
-  "carbonio-ws-collaboration-ui::git+${url}/carbonio-ws-collaboration-ui-i18n#tag=v1.0.2" # renovate: datasource=github-tags depName=zextras/carbonio-ws-collaboration-ui-i18n
+  "carbonio-ws-collaboration-ui::git+${url}/carbonio-ws-collaboration-ui-i18n#tag=v1.0.3" # renovate: datasource=github-tags depName=zextras/carbonio-ws-collaboration-ui-i18n
 )
 sha256sums=(
   'SKIP'
