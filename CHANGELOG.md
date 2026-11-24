@@ -1,3 +1,5 @@
+## [1.0.50](https://github.com/zextras/carbonio-webui-i18n/compare/v1.0.49...v1.0.50) (2026-11-24)
+
 ## [1.0.49](https://github.com/zextras/carbonio-webui-i18n/compare/v1.0.48...v1.0.49) (2026-11-21)
 
 ## [1.0.48](https://github.com/zextras/carbonio-webui-i18n/compare/v1.0.47...v1.0.48) (2026-11-20)
