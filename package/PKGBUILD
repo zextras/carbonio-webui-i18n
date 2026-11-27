@@ -1,6 +1,6 @@
 pkgname="carbonio-webui-i18n"
 epoch=1
-pkgver="1.0.54"
+pkgver="1.0.55"
 pkgrel="11"
 pkgdesc="Localization resources needed by Carbonio WebUI components"
 maintainer="Zextras <packages@zextras.com>"
